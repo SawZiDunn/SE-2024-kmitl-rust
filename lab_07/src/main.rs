@@ -18,10 +18,19 @@ impl BoxedStack {
     }
 
     fn pop(&mut self) -> Option<i32> {
+        if self.data.is_empty() {
+            println!("The stack is empty!\nYou cannot pop.");
+            return None;
+        }
+        println!("{} from the stack!", self.data[0]);
         Some(self.data.remove(0))
     }
 
     fn peek(&self) -> Option<&i32> {
+        if self.data.is_empty() {
+            return None;
+        }
+        println!("The top of the stack is {}", self.data.first().unwrap());
         self.data.first().clone() // or as_ref()
     }
 
@@ -31,10 +40,14 @@ impl BoxedStack {
 
     fn print_stack(&self) {
         if self.data.is_empty() {
-            println!("The stack is empty!");
+            println!("The stack is empty!\nYou cannot print.");
         } else {
             println!("Stack Contents: {:?}", self.data);
         }
+    }
+
+    fn count(&self) -> i32 {
+        self.data.len() as i32
     }
 }
 
@@ -45,17 +58,20 @@ fn main() {
     boxstack1.push(30);
 
     boxstack1.print_stack();
-    println!("The top of the stack is {}", boxstack1.peek().unwrap());
+    boxstack1.peek();
 
-    println!("Popped {} from the stack!", boxstack1.pop().unwrap()); //  30 popped
+    boxstack1.pop(); //  30 popped
     boxstack1.print_stack();
-    println!("The top of the stack is {}", boxstack1.peek().unwrap());
+    boxstack1.peek();
 
-    println!("Popped {} from the stack!", boxstack1.pop().unwrap()); // 20 popped
-    boxstack1.print_stack();
-
-    println!("Popped {} from the stack!", boxstack1.pop().unwrap()); // 10 popped
+    boxstack1.pop(); // 20 popped
     boxstack1.print_stack();
 
-    println!("Is the stack empty?: {}", boxstack1.is_empty());
+    boxstack1.pop(); // 10 popped
+    boxstack1.print_stack();
+
+    println!(
+        "Is the stack empty?: {}",
+        boxstack1.is_empty().to_string().to_uppercase()
+    );
 }
