@@ -24,7 +24,12 @@ fn pascal_triangle_balanced(n: usize) -> Vec<String> {
 
     // Format each row and center align it
     let mut formatted_rows = Vec::new();
-    let max_width = triangle.last().unwrap().iter().map(|num| num.to_string().len() + 1).sum::<usize>();
+    let max_width = triangle
+        .last()
+        .unwrap()
+        .iter()
+        .map(|num| num.to_string().len() + 1)
+        .sum::<usize>();
 
     for row in triangle {
         let row_str: Vec<String> = row.iter().map(|num| num.to_string()).collect();

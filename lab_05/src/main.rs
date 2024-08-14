@@ -35,7 +35,6 @@ enum EnemyType {
     Boar,
     Tiger,
     Dragon,
-    
 }
 
 enum Direction {
@@ -76,7 +75,7 @@ impl Player {
                 println!("You just walked to West!");
             }
         }
-        
+
         self.steps += 1;
         self.stamina -= 1;
         println!("Your stamina is now {}.", self.stamina);
@@ -126,12 +125,11 @@ impl Player {
                 println!("You bumped into a herb!\n+1 Power\n-1 Stamina");
                 self.power += 1;
             }
-            
+
             EncounterType::IronOre => {
                 println!("You found IronOre!\n+10 Power\n-1 Stamina");
                 self.power += 10;
             }
-            
 
             EncounterType::Enemy(enemy_type) => {
                 self.stamina -= 1;
@@ -187,7 +185,6 @@ impl Player {
                         enemy.hp -= self.power;
                         println!("You hit the enemy!");
                         println!("Enemy HP is now {}", enemy.hp);
-
                     } else {
                         println!("You missed!");
                     }
@@ -285,7 +282,6 @@ fn main() {
             power: 40,
             full_hp: 60,
         },
-        
     ];
 
     let mut player = Player::new();
@@ -325,7 +321,6 @@ fn main() {
             );
             player.show_status();
             break;
-
         } else if !player.is_alive() {
             println!("Game Over!\nYou are dead!");
             player.show_status();
