@@ -1,8 +1,14 @@
 // stack data structure basic implementation
+use std::fmt;
 
-#[derive(Debug)]
 struct BoxedStack {
     data: Box<Vec<i32>>,
+}
+
+impl fmt::Debug for BoxedStack {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "Stack Contents: {:?}", self.data)
+    }
 }
 
 impl BoxedStack {
@@ -42,7 +48,7 @@ impl BoxedStack {
         if self.data.is_empty() {
             println!("The stack is empty!\nYou cannot print.");
         } else {
-            println!("Stack Contents: {:?}", self.data);
+            println!("Stack Contents0: {:?}", self.data);
         }
     }
 

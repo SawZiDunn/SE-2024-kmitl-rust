@@ -4,6 +4,7 @@ struct DataStore<T> {
     items: Vec<T>,
 }
 
+#[allow(dead_code)]
 impl<T> DataStore<T> {
     fn new() -> Self {
         DataStore { items: Vec::new() }
@@ -34,9 +35,8 @@ impl<T> DataStore<T> {
     }
 }
 
-// 3. DataType Enum
-
 #[derive(Debug)]
+#[allow(dead_code)]
 enum DataType<T> {
     Number(T),
     Text(String),
