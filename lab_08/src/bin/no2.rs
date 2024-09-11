@@ -15,7 +15,7 @@ fn main() {
             .expect("Failed to read line");
         let input = input.trim();
         let args: Vec<&str> = input.split_whitespace().collect();
-        println!("{:?}", args);
+        // println!("{:?}", args);
 
         match args[0] {
             "open" => {

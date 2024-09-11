@@ -48,7 +48,7 @@ impl BoxedStack {
         if self.data.is_empty() {
             println!("The stack is empty!\nYou cannot print.");
         } else {
-            println!("Stack Contents0: {:?}", self.data);
+            println!("{:?}", self);
         }
     }
 

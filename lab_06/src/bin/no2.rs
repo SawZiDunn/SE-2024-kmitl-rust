@@ -1,4 +1,4 @@
-use std::fmt;
+use std::fmt::{Display, Formatter, Result};
 
 struct DataStore<T> {
     items: Vec<T>,
@@ -44,8 +44,8 @@ enum DataType<T> {
 }
 
 // 4. print Method for DataType
-impl<T: fmt::Display> fmt::Display for DataType<T> {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+impl<T: Display> Display for DataType<T> {
+    fn fmt(&self, f: &mut Formatter) -> Result {
         match self {
             DataType::Number(num) => write!(f, "Number: {}", num),
             DataType::Text(text) => write!(f, "Text: {}", text),
